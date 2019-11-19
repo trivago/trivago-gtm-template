@@ -10,7 +10,7 @@ These instructions will help you integrate trivago template as a new tag for GTM
 
 Before installing the tag make sure that you have:
 
-* installed GTM for your website and familiar with terms "tag" and "trigger". More on that topic [here](https://tagmanager.google.com/#/home)
+* installed GTM for your website and learnt about terms like "tag" and "trigger". More on that topic [here](https://tagmanager.google.com/#/home)
 * received the advertiser ID and all the neccessary information from trivago beforehand
 * confirmed the usage of GTM Tag with trivago for whitelisting
 
