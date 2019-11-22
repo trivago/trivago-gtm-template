@@ -1,5 +1,5 @@
 homepage: "http://developer.trivago.com/conversiontracking/conversion-api.html"
 documentation: "http://developer.trivago.com/conversiontracking/conversion-api.html"
 versions:
-  - sha: 6e5d056a7c9a19fa26768d77fc856497519cf501
+  - sha: dc09098e41d07373d7ebe839a64d12adab494c73
     changeNotes: Initial release of the Conversion API Tag
