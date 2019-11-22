@@ -1,5 +1,7 @@
+# Copyright 2019 trivago N.V.
+
 homepage: "http://developer.trivago.com/conversiontracking/conversion-api.html"
 documentation: "http://developer.trivago.com/conversiontracking/conversion-api.html"
 versions:
   - sha: dc09098e41d07373d7ebe839a64d12adab494c73
-    changeNotes: Initial release of the Conversion API Tag
+    changeNotes: Initial Version
