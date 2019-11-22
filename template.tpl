@@ -33,7 +33,7 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "TEXT",
     "name": "api_key",
-    "displayName": "API Key",
+    "displayName": "api_key",
     "simpleValueType": true,
     "valueValidators": [
       {
@@ -45,7 +45,7 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "TEXT",
     "name": "advertiser_id",
-    "displayName": "Advertiser Number",
+    "displayName": "advertiser_id",
     "simpleValueType": true,
     "valueValidators": [
       {
@@ -57,7 +57,7 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "TEXT",
     "name": "trv_reference",
-    "displayName": "trivago reference id",
+    "displayName": "trv_reference",
     "simpleValueType": true,
     "valueValidators": [
       {
@@ -69,80 +69,100 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "TEXT",
     "name": "hotel",
-    "displayName": "Partner Reference",
+    "displayName": "hotel",
     "simpleValueType": true,
-    "valueValidators": [
-      {
-        "type": "NON_EMPTY"
-      }
-    ],
     "help": "Unique partner reference for property"
   },
   {
     "type": "TEXT",
     "name": "arrival",
-    "displayName": "Arrival UNIX timestamp",
+    "displayName": "arrival",
     "simpleValueType": true,
-    "valueValidators": [
-      {
-        "type": "NUMBER"
-      }
-    ],
     "help": "Arrival date UNIX timestamp (e.g. 1524566908)"
   },
   {
     "type": "TEXT",
     "name": "departure",
-    "displayName": "Departure UNIX timestamp",
+    "displayName": "departure",
     "simpleValueType": true,
-    "valueValidators": [
-      {
-        "type": "NUMBER"
-      }
-    ],
     "help": "Departure date UNIX timestamp (e.g. 1524566908)"
   },
   {
     "type": "TEXT",
     "name": "date_format",
-    "displayName": "Date Format",
+    "displayName": "date_format",
     "simpleValueType": true,
     "help": "If arrival and departure cannot be given in UNIX timestamp format, they can be given in a different format (e.g. 20181025 - Ymd). In this case, the date_format parameter has to be provided."
   },
   {
     "type": "TEXT",
     "name": "booking_date",
-    "displayName": "Booking Date",
+    "displayName": "booking_date",
     "simpleValueType": true,
     "help": "Booking submit date (UNIX timestamp, e.g. 1524566500)"
   },
   {
     "type": "TEXT",
     "name": "booking_date_format",
-    "displayName": "Booking Date Format",
+    "displayName": "booking_date_format",
     "simpleValueType": true,
     "help": "If booking_date cannot be given in UNIX timestamp format, it can be given in a different format. In this case, the booking_date_format parameter has to be provided. Please also include the time of the booking in seconds (e.g. 20201025173002). The recommended format is YmdHis but the separator can be adjusted as desired according to the PHP documentation."
   },
   {
     "type": "TEXT",
     "name": "volume",
-    "displayName": "Volume",
+    "displayName": "volume",
     "simpleValueType": true,
     "help": "Total booking price per stay (including all rooms, all nights, all taxes)."
   },
   {
     "type": "TEXT",
     "name": "currency",
-    "displayName": "Currency",
+    "displayName": "currency",
     "simpleValueType": true,
     "help": "Currency in ISO 4217 code."
   },
   {
     "type": "TEXT",
     "name": "booking_id",
-    "displayName": "Booking ID",
+    "displayName": "booking_id",
     "simpleValueType": true,
     "help": "The advertiser\u0027s booking reference. For tEB, must be same as the reservation_id from the booking_submit response."
+  },
+  {
+    "type": "TEXT",
+    "name": "locale",
+    "displayName": "locale",
+    "simpleValueType": true,
+    "help": "Contains the trivago POS from which the visitor was linked through to the advertiser\u0027s site. Format is always the 2-letter top level domain of that country."
+  },
+  {
+    "type": "TEXT",
+    "name": "margin",
+    "displayName": "margin",
+    "simpleValueType": true,
+    "help": "Percentage which is received from the booking amount of the hotel as commission for the booking (in this sample case 15.8%)."
+  },
+  {
+    "type": "TEXT",
+    "name": "margin_absolute",
+    "displayName": "margin_absolute",
+    "simpleValueType": true,
+    "help": "In case the margin cannot be provided in percentage, it can be provided alternatively as absolute value (in this example 60.30 USD). Please note that the currency of margin_absolute should match the currency provided for the volume."
+  },
+  {
+    "type": "TEXT",
+    "name": "refund_amount",
+    "displayName": "refund_amount",
+    "simpleValueType": true,
+    "help": "Total refunded price per stay (including all rooms, all nights, all taxes)."
+  },
+  {
+    "type": "TEXT",
+    "name": "channel",
+    "displayName": "channel",
+    "simpleValueType": true,
+    "help": "In case of tEB advertisers, the param is mandatory. If the booking was done via tEB, the channel\u0027s value should be \"tebadv\". Alternatively, the value should be \"lpadv\".The parameter cannot be left empty."
   }
 ]
 
@@ -157,7 +177,7 @@ const encodeUriComponent = require('encodeUriComponent');
 const query = require('queryPermission');
 
 const log = require('logToConsole');
-const url ="https://cdn.jsdelivr.net/gh/Gaikanomer9/trivago_scripts@d59f8c7/trv_conversion_api.js";
+const url ="https://conv.trivago.com/trv_conversion_api.js";
 
 const TRV = {};
 TRV.Tag = {};
@@ -174,6 +194,11 @@ TRV.Tag.booking_date_format = data.booking_date_format;
 TRV.Tag.volume = data.volume;
 TRV.Tag.currency = data.currency;
 TRV.Tag.booking_id = data.booking_id;
+TRV.Tag.locale = data.locale;
+TRV.Tag.margin = data.margin;
+TRV.Tag.margin_absolute = data.margin_absolute;
+TRV.Tag.refund_amount = data.refund_amount;
+TRV.Tag.channel = data.channel;
 
 setInWindow('TRV', TRV, true);
 
@@ -226,7 +251,7 @@ ___WEB_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://cdn.jsdelivr.net/"
+                "string": "https://conv.trivago.com/"
               }
             ]
           }
@@ -316,6 +341,6 @@ scenarios:
 
 ___NOTES___
 
-Created on 19/11/2019, 14:45:20
+Created on 22/11/2019, 17:33:51
 
 
