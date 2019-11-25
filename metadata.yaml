@@ -1,7 +1,0 @@
-# Copyright 2019 Nikita Zavyalov
-
-homepage: "https://developer.trivago.com"
-documentation: "https://developer.trivago.com/conversiontracking/conversion-api.html"
-versions:
-  - sha: bcd35bc6fe963941c9d45c15234c5e319b75167b
-    changeNotes: Initial Production version
