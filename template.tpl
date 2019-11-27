@@ -13,6 +13,7 @@ ___INFO___
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
+  "categories": ["CONVERSIONS", "ADVERTISING"],
   "displayName": "trivago Conversion API",
   "brand": {
     "id": "brand_dummy",
