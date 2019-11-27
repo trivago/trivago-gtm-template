@@ -13,10 +13,6 @@ ___INFO___
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
-  "categories": [
-    "ADVERTISING",
-    "CONVERSIONS"
-  ],
   "displayName": "trivago Conversion API",
   "brand": {
     "id": "brand_dummy",
@@ -56,94 +52,110 @@ ___TEMPLATE_PARAMETERS___
     ]
   },
   {
-    "type": "TEXT",
-    "name": "trvReference",
-    "displayName": "trv_reference. The unique identifier which is passed from trivago with each click out on your platform",
-    "simpleValueType": true
+    "type": "GROUP",
+    "name": "group1",
+    "displayName": "Booking parameters",
+    "groupStyle": "ZIPPY_OPEN",
+    "subParams": [
+      {
+        "type": "TEXT",
+        "name": "trvReference",
+        "displayName": "trv_reference. The unique identifier which is passed from trivago with each click out on your platform",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "hotel",
+        "displayName": "hotel. Unique partner reference for property",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "arrival",
+        "displayName": "arrival. Arrival date",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "departure",
+        "displayName": "departure. Departure date",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "dateFormat",
+        "displayName": "date_format. If arrival and departure cannot be given in UNIX timestamp format, they can be given in a different format",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "bookingDate",
+        "displayName": "booking_date. Booking submit date",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "bookingDateFormat",
+        "displayName": "booking_date_format. Booking Date Format",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "volume",
+        "displayName": "volume. Total booking price per stay",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "currency",
+        "displayName": "currency. Currency in ISO 4217 code",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "bookingId",
+        "displayName": "booking_id. Booking reference",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "locale",
+        "displayName": "locale. trivago POS, always 2 letter word",
+        "simpleValueType": true
+      }
+    ]
   },
   {
-    "type": "TEXT",
-    "name": "hotel",
-    "displayName": "hotel. Unique partner reference for property",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "arrival",
-    "displayName": "arrival. Arrival date",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "departure",
-    "displayName": "departure. Departure date",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "dateFormat",
-    "displayName": "date_format. If arrival and departure cannot be given in UNIX timestamp format, they can be given in a different format",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "bookingDate",
-    "displayName": "booking_date. Booking submit date",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "bookingDateFormat",
-    "displayName": "booking_date_format. Booking Date Format",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "volume",
-    "displayName": "volume. Total booking price per stay",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "currency",
-    "displayName": "currency. Currency in ISO 4217 code",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "bookingId",
-    "displayName": "booking_id. Booking reference",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "locale",
-    "displayName": "locale. trivago POS, always 2 letter word",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "margin",
-    "displayName": "margin. Percentage which is received from the booking amount of the hotel as commission for the booking",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "marginAbsolute",
-    "displayName": "margin_absolute. In case the margin cannot be provided in percentage it can be provided alternatively as absolute value",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "refundAmount",
-    "displayName": "refund_amount. Total refunded price per stay",
-    "simpleValueType": true
-  },
-  {
-    "type": "TEXT",
-    "name": "channel",
-    "displayName": "channel. In case of tEB advertisers the param is mandatory",
-    "simpleValueType": true
+    "type": "GROUP",
+    "name": "group2",
+    "displayName": "Additional fields",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "TEXT",
+        "name": "margin",
+        "displayName": "margin. Percentage which is received from the booking amount of the hotel as commission for the booking",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "marginAbsolute",
+        "displayName": "margin_absolute. In case the margin cannot be provided in percentage it can be provided alternatively as absolute value",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "refundAmount",
+        "displayName": "refund_amount. Total refunded price per stay",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "channel",
+        "displayName": "channel. In case of tEB advertisers the param is mandatory",
+        "simpleValueType": true
+      }
+    ]
   }
 ]
 
@@ -312,6 +324,6 @@ scenarios: []
 
 ___NOTES___
 
-Created on 27/11/2019, 14:11:16
+Created on 27/11/2019, 14:44:00
 
 
