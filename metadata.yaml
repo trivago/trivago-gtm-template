@@ -1,7 +1,5 @@
-# Copyright 2019 trivago
-
-homepage: "https://developer.trivago.com"
-documentation: "https://developer.trivago.com/conversiontracking/conversion-api.html"
+homepage: "https://developer.trivago.com",
+documentation: "https://developer.trivago.com/conversiontracking/conversion-api.html",
 versions:
-  - sha: d633cc988f0b387d45394c7968b06e4ddac38760
-    changeNotes: Initial Version
+  - sha: eb80933ae46d4e484f8614c5e79c801495595f73
+    changeNotes: Initial Version of the tag
