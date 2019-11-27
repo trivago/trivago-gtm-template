@@ -1,4 +1,4 @@
-﻿___TERMS_OF_SERVICE___
+___TERMS_OF_SERVICE___
 
 By creating or modifying this file you agree to Google Tag Manager's Community
 Template Gallery Developer Terms of Service available at
@@ -9,13 +9,16 @@ Google may provide), as modified from time to time.
 ___INFO___
 
 {
-  "displayName": "trivago Conversion API",
+  "displayName": "trivago Conversion API imported",
   "description": "Implementation of the trivago conversion solution",
   "type": "TAG",
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
-  "categories": ["CONVERSION_TRACKING", "ANALYTICS"],
+  "categories": [
+    "CONVERSION_TRACKING",
+    "ANALYTICS"
+  ],
   "brand": {
     "id": "brand_dummy",
     "displayName": "",
@@ -161,6 +164,52 @@ ___TEMPLATE_PARAMETERS___
 ]
 
 
+___SANDBOXED_JS_FOR_WEB_TEMPLATE___
+
+const injectScript = require('injectScript');
+const setInWindow = require('setInWindow');
+const query = require('queryPermission');
+
+const log = require('logToConsole');
+const url ="https://conv.trivago.com/trv_conversion_api.js";
+
+const TRV = {};
+TRV.Tag = {};
+
+TRV.Tag.api_key = data.key;
+TRV.Tag.advertiser_id = data.advertiserId;
+TRV.Tag.trv_reference = data.trvReference;
+TRV.Tag.hotel = data.hotel;
+TRV.Tag.arrival = data.arrival;
+TRV.Tag.departure = data.departure;
+TRV.Tag.date_format = data.dateFormat;
+TRV.Tag.booking_date = data.bookingDate;
+TRV.Tag.booking_date_format = data.bookingDateFormat;
+TRV.Tag.volume = data.volume;
+TRV.Tag.currency = data.currency;
+TRV.Tag.booking_id = data.bookingId;
+TRV.Tag.locale = data.locale;
+TRV.Tag.margin = data.margin;
+TRV.Tag.margin_absolute = data.marginAbsolute;
+TRV.Tag.refund_amount = data.refundAmount;
+TRV.Tag.channel = data.channel;
+
+setInWindow('TRV', TRV, true);
+
+const onSuccess = () => {
+  	data.gtmOnSuccess();
+};
+
+const onFailure = () => {
+  	log("Error: failed to trigger event on url: " + url + " with data: " + data);
+    data.gtmOnFailure();
+};
+
+if (query('inject_script', url)) {
+  injectScript(url, onSuccess, onFailure);
+}
+
+
 ___WEB_PERMISSIONS___
 
 [
@@ -257,7 +306,7 @@ ___WEB_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://conv.trivago.com/"
+                "string": "https://conv.trivago.com/*"
               }
             ]
           }
@@ -272,52 +321,12 @@ ___WEB_PERMISSIONS___
 ]
 
 
-___SANDBOXED_JS_FOR_WEB_TEMPLATE___
+___TESTS___
 
-const injectScript = require('injectScript');
-const setInWindow = require('setInWindow');
-const query = require('queryPermission');
-
-const log = require('logToConsole');
-const url ="https://conv.trivago.com/trv_conversion_api.js";
-
-const TRV = {};
-TRV.Tag = {};
-
-TRV.Tag.api_key = data.key;
-TRV.Tag.advertiser_id = data.advertiserId;
-TRV.Tag.trv_reference = data.trvReference;
-TRV.Tag.hotel = data.hotel;
-TRV.Tag.arrival = data.arrival;
-TRV.Tag.departure = data.departure;
-TRV.Tag.date_format = data.dateFormat;
-TRV.Tag.booking_date = data.bookingDate;
-TRV.Tag.booking_date_format = data.bookingDateFormat;
-TRV.Tag.volume = data.volume;
-TRV.Tag.currency = data.currency;
-TRV.Tag.booking_id = data.bookingId;
-TRV.Tag.locale = data.locale;
-TRV.Tag.margin = data.margin;
-TRV.Tag.margin_absolute = data.marginAbsolute;
-TRV.Tag.refund_amount = data.refundAmount;
-TRV.Tag.channel = data.channel;
-
-setInWindow('TRV', TRV, true);
-
-const onSuccess = () => {
-  	data.gtmOnSuccess();
-};
-
-const onFailure = () => {
-  	log("Error: failed to trigger event on url: " + url + " with data: " + data);
-    data.gtmOnFailure();
-};
-
-if (query('inject_script', url)) {
-  injectScript(url, onSuccess, onFailure);
-}
+scenarios: []
 
 
 ___NOTES___
 
 Created on 27/11/2019, 14:44:00
+
