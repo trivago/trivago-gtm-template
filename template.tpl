@@ -14,6 +14,7 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "trivago Conversion API",
+  "categories": ["CONVERSION_TRACKING", "ANALYTICS"],
   "brand": {
     "id": "brand_dummy",
     "displayName": "Custom Template",
