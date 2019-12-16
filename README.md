@@ -43,7 +43,7 @@ The recommended way would be to extract this value and store it as a dataLayer v
 6. Type the variable name on the top of the page as **trv_ref**;
 7. Save the variable and go to the **Tags** page;
 
-Now let's create new tag that will detect the url containing the trv_reference parameter and store it as a cookie:
+Now let's create new tag that will detect the url containing the trv_reference parameter and store it as a dataLayer variable:
 
 1. Click on **New** button to create new tag;
 2. Click on the tag configuration and select tag type as **Custom HTML**;
