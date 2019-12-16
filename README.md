@@ -1,5 +1,7 @@
 # trivago GTM Template
 
+**Version: 1.1** *Change in the trv_reference saving model - from cookie to dataLayer*
+
 trivago GTM template implementation for Conversion API connection.
 
 ## Getting Started
@@ -31,13 +33,13 @@ The trivago reference or click id is appended to the booking link after the clic
 ```
 https://example.com/?param1=123&trv_reference=ref_1
 ```
-The recommended way would be to extract this value and store it as a 1rd party cookie for 30 days. For this we can do the following:
+The recommended way would be to extract this value and store it as a dataLayer variable. For this we can do the following:
 
 1. Create new variable by navigating to **Variables** menu;
 2. Click **New** under the **User-Defined Variables** section;
 3. Click on **Variable configuration** card;
-4. Select the variable type as a **1st-Party Cookie**;
-5. Type under the **Cookie name** the value **GTM_TRV_REFERENCE_TR** or the other one but note it somewhere;
+4. Select the variable type as a **Data Layer Variable**;
+5. Type under the **Data Layer Variable Name** the value **trv Reference ID** or the other one but note it somewhere;
 6. Type the variable name on the top of the page as **trv_ref**;
 7. Save the variable and go to the **Tags** page;
 
@@ -48,22 +50,15 @@ Now let's create new tag that will detect the url containing the trv_reference p
 3. Insert the following code:
 ```javascript
 <script>
- 
-var cookieName  = "GTM_TRV_REFERENCE_TR"; 
 var url = new URL("{{Page URL}}");
-var cookieValue = url.searchParams.get("trv_reference");
-var cookiePath  = "/";
-var expirationTime = 2678400;                           //time the cookie should expire in seconds
-expirationTime = expirationTime * 1000;                 //Convert expirationtime to milliseconds
- 
-var date = new Date();                                  //Create new date
-var dateTimeNow = date.getTime();                       //What is the current time in milliseconds
-date.setTime(dateTimeNow + expirationTime);             //Set expiration time
-var expirationTime = date.toUTCString();                //Convert milliseconds to UTC time string
-document.cookie = cookieName+"="+cookieValue+"; expires="+expirationTime+"; path="+cookiePath;  //Set cookie
+var trv_reference = url.searchParams.get("trv_reference");
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+ 'trv Reference ID': trv_reference
+ });  
 </script>
 ```
-Don't forget to update the cookieName if that was changed earlier;
+Don't forget to update the variable name *trv Reference ID* if that was changed earlier;
 
 Now let's configure the trigger for that tag:
 1. Clost the tag configuration and open the trigger selection window;
