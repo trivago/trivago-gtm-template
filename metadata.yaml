@@ -1,5 +1,5 @@
 homepage: "https://developer.trivago.com/conversiontracking/conversion-api.html",
-documentation: "https://developer.trivago.com/conversiontracking/conversion-api.html",
+documentation: "https://github.com/trivago/trivago-gtm-template",
 versions:
   - sha: 1f734281edede626eb67dacafde6bc1c2af131c6
     changeNotes: Initial Version of the TAG
