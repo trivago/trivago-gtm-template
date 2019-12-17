@@ -31,7 +31,7 @@ The trivago reference or click id is appended to the booking link after the clic
 ```
 https://example.com/?param1=123&trv_reference=ref_1
 ```
-The recommended way would be to extract this value and store it as a 1rd party cookie for 30 days. For this we can do the following:
+The recommended way would be to extract this value and store it as a 1st party cookie for 30 days. For this we can do the following:
 
 1. Create new variable by navigating to **Variables** menu;
 2. Click **New** under the **User-Defined Variables** section;
@@ -66,7 +66,7 @@ document.cookie = cookieName+"="+cookieValue+"; expires="+expirationTime+"; path
 Don't forget to update the cookieName if that was changed earlier;
 
 Now let's configure the trigger for that tag:
-1. Clost the tag configuration and open the trigger selection window;
+1. Close the tag configuration and open the trigger selection window;
 2. Click on **+** to create a new trigger and select the **Page view** type;
 3. Select **Some Page Views** radio button;
 4. Modify the settings and configure the trigger to fire only one **Page URL** containing **trv_reference**![Image of settings](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/settings.png)
