@@ -30,6 +30,7 @@ Note the existing variables or create a new variables for required tag parameter
 
 If you are already using the GTM, you could already have some of the variables available:
 [Image of variables](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/variables.png)
+
 Feel free to reuse them but make sure that the format is matching specifications here https://developer.trivago.com/conversiontracking/conversion-api.html
 
 ##### Create new variable for trv_reference cookie
