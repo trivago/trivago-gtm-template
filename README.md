@@ -29,7 +29,7 @@ Note the existing variables or create a new variables for required tag parameter
 2. -N Set up the variable data for each one.
 
 If you are already using the GTM, you could already have some of the variables available:
-[Image of variables](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/variables.png)
+![Image of variables](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/variables.png)
 
 Feel free to reuse them but make sure that the format is matching specifications here https://developer.trivago.com/conversiontracking/conversion-api.html
 
@@ -43,7 +43,7 @@ We'll need to create a new variable dedicated to storing the cookie that will be
 4. Select the variable type as a **1st-Party Cookie**;
 5. Type under the **Cookie name** the value **GTM_TRV_REFERENCE_TR** 
 6. Type the variable name on the top of the page as **trivago_cookie**;
-[Image of cookie variable](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/trivago_cookie.png)
+![Image of cookie variable](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/trivago_cookie.png)
 
 
 ##### Set up the remaining variables
@@ -78,7 +78,7 @@ Before we add trivago tag to the container we'll need to get them from **Communi
 3. Under the **Custom** section select the **trivago Reference**;
 4. The default settings are storing the cookie for 30 days and using the *trv_reference* as a parameter in the URL. If it's the same for you leave these values;
 5. Under the **Triggering** section select **Page view** trigger type and configure it like this:
-[Image of settings cookie](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/settings.png)
+![Image of settings cookie](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/settings.png)
 6. Save the tag.
 
 #### Step 3.Configure the trivago Conversion API tag
@@ -92,7 +92,7 @@ Before we add trivago tag to the container we'll need to get them from **Communi
 5. Expand the **Booking parameters** section and select the variables for all the parameters you are going to pass;
 6. For the **trv_reference** parameter fill in the variable created before (**trivago_cookie**);
 7. Under the **Triggering** section select **Page view** trigger type and configure it like this:
-[Image of tag trigger](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/tag_trigger.png)
+![Image of tag trigger](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/tag_trigger.png)
 The value for RegEx expression is **[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}**
 8. Save the tag.
 
