@@ -16,62 +16,34 @@ Before installing the tag make sure that you have:
 
 ### Installing
 
-#### Set up new variables
+Installation consists of 3 steps:
+* specifying the variables;
+* installation of the **trivago Reference** tag that will take care of cookie set up for trv_reference;
+* installation of the **trivago Conversion API** tag that will perform the confirmation of the booking.
+
+#### Step 1.Set up new variables
 
 Note the existing variables or create a new variables for required tag parameters.
 
 1. Define the variables that are going to be passed to the tag and shared with trivago.
 2. -N Set up the variable data for each one.
 
-We'll go through the set up of the trv_reference variable as it requires some manual code.
+If you are already using the GTM, you could already have some of the variables available:
+[Image of variables](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/variables.png)
+Feel free to reuse them but make sure that the format is matching specifications here https://developer.trivago.com/conversiontracking/conversion-api.html
 
-##### Set up the trv_reference
+##### Create new variable for trv_reference cookie
 
-The trivago reference or click id is appended to the booking link after the clicking out of the trivago platform. For example:
-```
-https://example.com/?param1=123&trv_reference=ref_1
-```
-The recommended way would be to extract this value and store it as a 1st party cookie for 30 days. For this we can do the following:
+We'll need to create a new variable dedicated to storing the cookie that will be updated by **trivago Reference** tag and later used by **trivago Conversion API**
 
 1. Create new variable by navigating to **Variables** menu;
 2. Click **New** under the **User-Defined Variables** section;
-3. Click on **Variable configuration** card;
+3. Click on **Variable** configuration card;
 4. Select the variable type as a **1st-Party Cookie**;
-5. Type under the **Cookie name** the value **GTM_TRV_REFERENCE_TR** or the other one but note it somewhere;
-6. Type the variable name on the top of the page as **trv_ref**;
-7. Save the variable and go to the **Tags** page;
+5. Type under the **Cookie name** the value **GTM_TRV_REFERENCE_TR** 
+6. Type the variable name on the top of the page as **trivago_cookie**;
+[Image of cookie variable](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/trivago_cookie.png)
 
-Now let's create new tag that will detect the url containing the trv_reference parameter and store it as a cookie:
-
-1. Click on **New** button to create new tag;
-2. Click on the tag configuration and select tag type as **Custom HTML**;
-3. Insert the following code:
-```javascript
-<script>
- 
-var cookieName  = "GTM_TRV_REFERENCE_TR"; 
-var url = new URL("{{Page URL}}");
-var cookieValue = url.searchParams.get("trv_reference");
-var cookiePath  = "/";
-var expirationTime = 2678400;                           //time the cookie should expire in seconds
-expirationTime = expirationTime * 1000;                 //Convert expirationtime to milliseconds
- 
-var date = new Date();                                  //Create new date
-var dateTimeNow = date.getTime();                       //What is the current time in milliseconds
-date.setTime(dateTimeNow + expirationTime);             //Set expiration time
-var expirationTime = date.toUTCString();                //Convert milliseconds to UTC time string
-document.cookie = cookieName+"="+cookieValue+"; expires="+expirationTime+"; path="+cookiePath;  //Set cookie
-</script>
-```
-Don't forget to update the cookieName if that was changed earlier;
-
-Now let's configure the trigger for that tag:
-1. Close the tag configuration and open the trigger selection window;
-2. Click on **+** to create a new trigger and select the **Page view** type;
-3. Select **Some Page Views** radio button;
-4. Modify the settings and configure the trigger to fire only one **Page URL** containing **trv_reference**![Image of settings](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/settings.png)
-5. Save the trigger and tag;
-6. Publish new version of the container.
 
 ##### Set up the remaining variables
 
@@ -84,8 +56,11 @@ We'll set up the **hotel** variable.
 2. One the booking confirmation page select the id of the desired the element. (if you are using Chrome click on the element with right button and select **Inspect**![Image of settings](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/id.png)
 3. Save the variable by the desired name and later use it in tag set up
 
+#### Step 2.Configure the trivago Reference tag
 
-#### Adding new trivago Tag to the workspace
+Before we add trivago tag to the container we'll need to get them from **Community Template Gallery**.
+
+##### Adding trivago tags to the workspace
 
 1. From the GTM Workspace overview click on **Add a new tag**
 2. Click on **Tag Configuration**
@@ -93,20 +68,32 @@ We'll set up the **hotel** variable.
 4. Search or scroll for **trivago Conversion API** tag and click on it
 5. Add the tag to the workspace by clicking **Add to workspace**
 6. Check for the required permissions (in order for Conversion API to access the endpoint the usage of additional Javascript methods is needed and this requires the script injection permission from the trivago domain)
-7. Return to the Tag selection page and select **trivago Conversion API**
+7. Repeat steps 4-6 for the **trivago Reference** tag.
 
-#### Configuring the trivago Tag
+##### Set up the tag
 
-1. Insert advertiser number and api key received by trivago
-2. Configure the remaining fields through preconfigured variables
+1. From the GTM Workspace overview click on **Add a new tag**;
+2. Click on **Tag Configuration**;
+3. Under the **Custom** section select the **trivago Reference**;
+4. The default settings are storing the cookie for 30 days and using the *trv_reference* as a parameter in the URL. If it's the same for you leave these values;
+5. Under the **Triggering** section select **Page view** trigger type and configure it like this:
+[Image of settings cookie](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/settings.png)
+6. Save the tag.
 
-#### Configuring the trigger
+#### Step 3.Configure the trivago Conversion API tag
 
-1. Select the proper trigger for the event like visiting the booking confirmation page.
+##### Set up the tag
 
-#### Publishing the changes
-
-1. Click on the **Submit** button in the top-right location of the screen.
+1. From the GTM Workspace overview click on **Add a new tag**;
+2. Click on **Tag Configuration**;
+3. Under the **Custom** section select the **trivago Conversion API**;
+4. Specify the api key and advertiser id provided by trivago;
+5. Expand the **Booking parameters** section and select the variables for all the parameters you are going to pass;
+6. For the **trv_reference** parameter fill in the variable created before (**trivago_cookie**);
+7. Under the **Triggering** section select **Page view** trigger type and configure it like this:
+[Image of tag trigger](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/tag_trigger.png)
+The value for RegEx expression is **[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}**
+8. Save the tag.
 
 ## Running the test
 
