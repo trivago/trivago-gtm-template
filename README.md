@@ -2,10 +2,6 @@
 
 trivago GTM template implementation for Conversion API connection.
 
-## Support and questions
-
-If you have questions about the installation process or not sure about anything feel free to get in touch via email: nikita.zavyalov@trivago.com
-
 ## Getting Started
 
 These instructions will help you integrate trivago template as a new tag for GTM.
