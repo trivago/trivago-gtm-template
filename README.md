@@ -103,7 +103,6 @@ The value for RegEx expression is **[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{
 ## Running the test
 
 Inform trivago about implementing the GTM tag. After that we'll monitor the incoming bookings for some time and after matching the number of bookings from both sides the Conversion API could be considered implemented.
-ss for submitting pull requests to us.
 
 ### Troubleshooting
 
