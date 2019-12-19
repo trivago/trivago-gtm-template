@@ -104,3 +104,11 @@ The value for RegEx expression is **[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{
 
 Inform trivago about implementing the GTM tag. After that we'll monitor the incoming bookings for some time and after matching the number of bookings from both sides the Conversion API could be considered implemented.
 ss for submitting pull requests to us.
+
+### Troubleshooting
+
+If you want you can share the public container preview that would allow us to see the variables and triggers you are using. In order to do this copy the public link:
+
+Versions -> (Select version with deployed trivago tags) 3 dots -> Share preview -> Share link inside
+
+Send this link to your account manager and we'll help you to identify the problem.
