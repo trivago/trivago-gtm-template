@@ -1,5 +1,5 @@
 homepage: "https://developer.trivago.com/conversiontracking/conversion-api.html",
 documentation: "https://github.com/trivago/trivago-gtm-template",
 versions:
-  - sha: 3f4290c1a2d057b2322a5482a866f7cce79e1803
-    changeNotes: Initial Version of the TAG
+  - sha: bb08f08422c0af146d41bcc5b9f8be618b69f973
+    changeNotes: Updated the trv_reference storage
