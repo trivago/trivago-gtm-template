@@ -95,9 +95,7 @@ Before we add trivago tag to the container we'll need to get them from **Communi
 4. Specify the api key and advertiser id provided by trivago;
 5. Expand the **Booking parameters** section and select the variables for all the parameters you are going to pass;
 6. For the **trv_reference** parameter fill in the variable created before (**trivago_cookie**);
-7. Under the **Triggering** section select **Page view** trigger type and configure it like this:
-![Image of tag trigger](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/tag_trigger.png)
-The value for RegEx expression is **[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}**
+7. Under the **Triggering** section select **Page view** trigger type or the trigger you use for a booking confirmation. You could also specify the additional condition to trigger the request only when the UTM is trivago but the additional filtering is done by the tag itself, so the only "must-have" condition is the **Page view** of similar trigger. 
 8. Save the tag.
 
 ## Running the test
