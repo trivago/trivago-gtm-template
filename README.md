@@ -2,6 +2,14 @@
 
 trivago GTM template implementation for Conversion API connection.
 
+## Updating the Tag
+
+To update the GTM Template do the following:
+1. Click **Templates** on the left menu;
+2. For the trivago Tag Templates (**trivago Reference** and **trivago Conversion API**) the following icons should appear:
+![Image of updates](https://raw.githubusercontent.com/Gaikanomer9/trivago_scripts/master/updates.png)
+3. Click on both templates and accept the update.
+
 ## Support and questions
 
 If you have questions about the installation process or not sure about anything feel free to get in touch via email: nikita.zavyalov@trivago.com
