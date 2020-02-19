@@ -12,6 +12,18 @@ These instructions will help you integrate trivago template as a new tag for GTM
 
 For more detailed documentation please reffer to the WIKI for this project [here](https://github.com/trivago/trivago-gtm-template/wiki) 
 
+[Getting started](https://github.com/trivago/trivago-gtm-template/wiki/Getting-started)
+
+Installation
+1. [Adding tags from Community Template Gallery](https://github.com/trivago/trivago-gtm-template/wiki/Adding-tags-from-Community-Template-Gallery)
+2. [Setting up variables](https://github.com/trivago/trivago-gtm-template/wiki/Setting-up-variables)
+3. [Installing the trivago Reference tag](https://github.com/trivago/trivago-gtm-template/wiki/Installing-trivago-Reference-tag)
+4. [Installing trivago Conversion API tag](https://github.com/trivago/trivago-gtm-template/wiki/Installing-trivago-Conversion-API-tag)
+
+[Testing installation and publishing tags](https://github.com/trivago/trivago-gtm-template/wiki/Testing-the-installation)
+
+[Updating tags](https://github.com/trivago/trivago-gtm-template/wiki/Updating-the-Tag)
+
 ### Prerequisites
 
 Before installing the tag make sure that you have:
