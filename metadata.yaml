@@ -1,5 +1,5 @@
 homepage: "https://developer.trivago.com/conversiontracking/conversion-api.html",
 documentation: "https://github.com/trivago/trivago-gtm-template",
 versions:
-  - sha: bb08f08422c0af146d41bcc5b9f8be618b69f973
-    changeNotes: Updated the trv_reference storage
+  - sha: 190c063789c62beca3d9292d15d00790a71f8e4c
+    changeNotes: Updated the cancellation support
