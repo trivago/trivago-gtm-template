@@ -19,6 +19,7 @@ Installation
 2. [Setting up variables](https://github.com/trivago/trivago-gtm-template/wiki/Setting-up-variables)
 3. [Installing the trivago Reference tag](https://github.com/trivago/trivago-gtm-template/wiki/Installing-trivago-Reference-tag)
 4. [Installing trivago Conversion API tag](https://github.com/trivago/trivago-gtm-template/wiki/Installing-trivago-Conversion-API-tag)
+5. [Configuring trivago tag for sending cancellation data](https://github.com/trivago/trivago-gtm-template/wiki/Configuring-trivago-tag-for-sending-cancellation-data)
 
 [Testing installation and publishing tags](https://github.com/trivago/trivago-gtm-template/wiki/Testing-the-installation)
 
