@@ -161,19 +161,42 @@ ___TEMPLATE_PARAMETERS___
         "displayName": "channel",
         "simpleValueType": true,
         "help": "In case of tEB advertisers, the param is mandatory. If the booking was done via tEB, the channel\u0027s value should be \"tebadv\". Alternatively, the value should be \"lpadv\".The parameter cannot be left empty."
-      },
+      }
+    ]
+  },
+  {
+    "type": "GROUP",
+    "name": "cancellation_parameters",
+    "displayName": "Cancellation configuration (requires a new tag and trigger setup, refer to the documentation for more information)",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
       {
         "type": "CHECKBOX",
         "name": "refundConfirmation",
-        "checkboxText": "Configure this tag for refund request",
+        "checkboxText": "Configure this tag for cancellation data transmission",
         "simpleValueType": true
       },
       {
         "type": "TEXT",
         "name": "refundAmount",
-        "displayName": "refund_amount. Fill only if the Tag is configured for the cancelation event.",
+        "displayName": "refund_amount. Total refunded price per stay (including all rooms, all nights, all taxes).",
         "simpleValueType": true,
         "help": "Total refunded price per stay (including all rooms, all nights, all taxes)."
+      },
+      {
+        "type": "TEXT",
+        "name": "cancellationDate",
+        "displayName": "cancellation_date. Cancellation submit date. UNIX timestamp (1591783200)",
+        "simpleValueType": true,
+        "help": "Cancellation submit date. UNIX timestamp (1591783200)"
+      },
+      {
+        "type": "TEXT",
+        "name": "cancellationDateFormat",
+        "displayName": "cancellation_date_format. If cancellation_date cannot be given in UNIX timestamp format, it can be given in a different format. In this case, the cancellation_date_format parameter has to be provided. Please also include the time of the cancellation in seconds (e.g. 20201025173002).",
+        "simpleValueType": true,
+        "help": "For example, use YmdHis for 20201025173002 value",
+        "valueHint": "YmdHis"
       }
     ]
   }
@@ -211,9 +234,13 @@ TRV.Tag.booking_id = data.bookingId;
 TRV.Tag.locale = data.locale;
 TRV.Tag.margin = data.margin;
 TRV.Tag.margin_absolute = data.marginAbsolute;
-TRV.Tag.refund_amount = data.refundAmount;
 TRV.Tag.channel = data.channel;
 TRV.Tag.refund_confirmation = data.refundConfirmation;
+TRV.Tag.refund_amount = data.refundAmount;
+TRV.Tag.cancellation_date = data.cancellationDate;
+TRV.Tag.cancellation_date_format = data.cancellationDateFormat;
+
+
 
 setInWindow('TRV', TRV, true);
 setInWindow('DATA_TRV', data, true);
