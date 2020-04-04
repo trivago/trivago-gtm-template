@@ -11,7 +11,7 @@ If you have questions about the installation process or not sure about anything 
 These instructions will help you integrate trivago template as a new tag for GTM.
 
 Use the video tutorial to get an understanding of the installation process and use the below wiki links for detailed instructions.
-[![Watch the video](https://img.youtube.com/vi/PwoP9Bey-Ms/maxresdefault.jpg)](https://youtu.be/PwoP9Bey-Ms)
+[![Watch the video](https://img.youtube.com/vi/r8VgzDNwpxY/maxresdefault.jpg)](https://youtu.be/r8VgzDNwpxY)
 
 For more detailed documentation please reffer to the WIKI for this project [here](https://github.com/trivago/trivago-gtm-template/wiki) 
 
